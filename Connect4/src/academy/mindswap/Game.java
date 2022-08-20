@@ -19,7 +19,6 @@ public class Game {
                String move;
 
                do{
-                   printBoard(board);
 
                    if(counter % 2 == 0){
                        playerChar = 'Y';
@@ -30,13 +29,13 @@ public class Game {
 
 
                    do {
+                       printBoard(board);
                        System.out.println("It's " + playerChar + " turn to play");
                        System.out.println("Choose between 0 and 6 please.");
                        move = scanner.nextLine();
-                       validation = playValidation(board,Integer.parseInt(move));
                    }while(!move.matches("^[0-6]$"));
 
-                  // validation = playValidation(board,Integer.parseInt(move));
+                   validation = playValidation(board,Integer.parseInt(move));
 
                }while(validation == false);
 
