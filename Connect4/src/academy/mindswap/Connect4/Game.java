@@ -4,9 +4,9 @@ public class Game implements Runnable{
 
     private final PlayerHandler player1;
     private final PlayerHandler player2;
-
     private final Server server;
     private char[][] boardGame;
+
 
     public Game(PlayerHandler[] array, Server server) {
         this.server = server;
@@ -28,6 +28,7 @@ public class Game implements Runnable{
 
             receiveMove(player1);
             if(checkWinner(player1.getPlayerChar(),player1)){
+                printBoard();
                 checkIfWantsToPlay(player1);
                 return;
             }
@@ -38,6 +39,7 @@ public class Game implements Runnable{
 
             receiveMove(player2);
             if(checkWinner(player2.getPlayerChar(),player2)){
+                printBoard();
                 checkIfWantsToPlay(player2);
                 return;
             }
