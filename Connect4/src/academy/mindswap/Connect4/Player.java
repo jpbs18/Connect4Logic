@@ -17,6 +17,9 @@ public class Player {
         player.handleServer();
     }
 
+    /**
+     *
+     */
     private void setServer() {
         String host = HOST;
         int port = PORT;

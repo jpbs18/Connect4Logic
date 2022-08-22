@@ -17,6 +17,7 @@ public class PlayerHandler {
         startBuffers();
     }
 
+
     public boolean isOffline(){
         if (playerSocket == null){
             return true;
