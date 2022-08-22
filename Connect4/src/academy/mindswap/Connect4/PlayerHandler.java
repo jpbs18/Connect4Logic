@@ -1,5 +1,7 @@
 package academy.mindswap.Connect4;
 
+import academy.mindswap.Connect4.Utilities.Colors;
+
 import java.io.*;
 import java.net.Socket;
 
@@ -11,10 +13,16 @@ public class PlayerHandler {
     private boolean isPlaying;
     private String playerName;
     private char playerChar;
+    private static int counter = 0;
+    private final String colorChar;
 
     public PlayerHandler(Socket clientSocket) {
         playerSocket = clientSocket;
         startBuffers();
+        colorChar = counter % 2 == 0 ? Colors.RED.getColor()
+                : Colors.YELLOW.getColor();
+        counter++;
+
     }
 
     public boolean isOffline(){
@@ -82,11 +90,14 @@ public class PlayerHandler {
     }
 
     public String getPlayerName() {
-        return playerName;
+        return playerName.toUpperCase();
     }
 
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
     }
 
+    public String getColorChar() {
+        return colorChar;
+    }
 }

@@ -1,5 +1,7 @@
 package academy.mindswap.Connect4;
 
+import academy.mindswap.Connect4.Utilities.Colors;
+
 import java.io.*;
 
 import static academy.mindswap.Connect4.Utilities.Messages.*;
@@ -26,24 +28,24 @@ public class Game implements Runnable{
 
         while(true){
 
-            printBoard();
+            printBoard(player1);
             player1.sendMessage(YOUR_TURN);
             player2.sendMessage(OPPONENT_TURN);
 
             receiveMove(player1);
             if(checkWinner(player1.getPlayerChar(),player1)){
-                printBoard();
+                printBoard(player1);
                 checkIfWantsToPlay(player1);
                 return;
             }
 
-            printBoard();
+            printBoard(player2);
             player2.sendMessage(YOUR_TURN);
             player1.sendMessage(OPPONENT_TURN);
 
             receiveMove(player2);
             if(checkWinner(player2.getPlayerChar(),player2)){
-                printBoard();
+                printBoard(player2);
                 checkIfWantsToPlay(player2);
                 return;
             }
@@ -93,18 +95,19 @@ public class Game implements Runnable{
         return array;
     }
 
-    private void printBoard() {
+    private void printBoard(PlayerHandler player) {
 
         for (int i = 0; i < boardGame.length; i++) {
 
-            StringBuilder line = new StringBuilder("|");
+            StringBuilder line = new StringBuilder(Colors.BLUE.getColor()+ "|");
 
             for (int j = 0; j < boardGame[0].length; j++) {
-                line.append(boardGame[i][j]).append("|");
+                line.append(player.getColorChar()).append(boardGame[i][j]).append(RESET).
+                        append(Colors.BLUE.getColor()).append("|");
             }
             broadCast(line.toString());
         }
-        broadCast(BOARD_LIMITATION);
+        broadCast(BOARD_LIMITATION+ RESET);
     }
 
     private void receiveMove(PlayerHandler player){
