@@ -26,5 +26,4 @@ public class Messages {
     public final static String HOST = "localhost";
     public final static String SERVER_PROBLEMS = "Server is with problems. Try again later.";
     public final static int PORT = 8080;
-
 }
