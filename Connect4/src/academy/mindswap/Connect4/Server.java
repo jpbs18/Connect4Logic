@@ -65,6 +65,11 @@ public class Server {
         }
     }
 
+    /**
+     * It creates a file .txt that has the logotype.
+     * It creates a buffereredReader to read the txt file and then it prints the logotype with random colors for each player.
+     * @param playerHandler
+     */
     private void drawLogo(PlayerHandler playerHandler) {
         File file = new File("/Users/mac/IdeaProjects/Connect4Logic_final_final/Connect4/src/academy/mindswap/Connect4/Resources/Logotype.txt");
         BufferedReader reader = null;
