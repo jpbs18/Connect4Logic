@@ -81,7 +81,7 @@ public class Server {
      * @param playerHandler
      */
     private void drawLogo(PlayerHandler playerHandler) {
-        File file = new File("/Users/mac/IdeaProjects/Connect4Logic_final_final/Connect4/src/academy/mindswap/Connect4/Resources/Logotype.txt");
+        File file = new File("/Users/carlapereira/Documents/Game/Connect4/src/academy/mindswap/Connect4/Resources/Logotype.txt");
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader(file));
