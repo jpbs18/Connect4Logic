@@ -1,5 +1,8 @@
 package academy.mindswap.Connect4.Utilities;
 
+/**
+ * This class is responsible for the colors of the game.
+ */
 public enum Colors {
 
 
@@ -12,11 +15,19 @@ public enum Colors {
 
         private String color;
 
+    /**
+     * Constructor method of enum Colors that accepts a String as parameter.
+     * @param color
+     */
         Colors(String color) {
             this.color = color;
         }
 
-        public String getColor() {
+    /**
+     * Method responsible for getting a specific color.
+     * @return a String that represents a color.
+     */
+    public String getColor() {
             return color;
         }
     }

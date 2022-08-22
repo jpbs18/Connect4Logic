@@ -1,5 +1,8 @@
 package academy.mindswap.Connect4.Utilities;
 
+/**
+ * This class is responsible for storing all the messages sent to the console.
+ */
 public class Messages {
 
     public final static String YOUR_TURN = "It's your turn, please inset move from 0 to 6";
