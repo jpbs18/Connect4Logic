@@ -4,6 +4,9 @@ import java.io.*;
 
 import static academy.mindswap.Connect4.Utilities.Messages.*;
 
+/**
+ * This class it is responsible for running the game and implements the functional Interface Runnable.
+ */
 public class Game implements Runnable{
 
     private final PlayerHandler player1;
@@ -11,13 +14,25 @@ public class Game implements Runnable{
     private final Server server;
     private char[][] boardGame;
 
-
+    /**
+     * Construct method that initialize the players and create the board.
+     * @param array
+     * @param server
+     */
     public Game(PlayerHandler[] array, Server server) {
         this.server = server;
         player1 = array[0];
         player2 = array[1];
         boardGame = createBoard();
     }
+
+    /**
+     * This is the method that contains all the logic of the game.
+     * The players are set with corresponded Chars.
+     * Then sends messages for the players to inform their turn.
+     * Receives the players moves and check if one of them won.
+     * When a game ends, the players are asked if they would like to continue playing.
+     */
     private void gameProcess(){
 
         player1.setPlayerChar(R);
@@ -49,6 +64,9 @@ public class Game implements Runnable{
             }
         }
     }
+    /**
+     * A method that verifies if the players continue playing.
+     */
 
     private void checkIfWantsToPlay(PlayerHandler player) {
         broadCast(WANT_TO_PLAY);
@@ -56,6 +74,10 @@ public class Game implements Runnable{
         playAgain(player2);
     }
 
+    /**
+     * This method is responsible for managing the players choice to continue playing or not.
+     * @param player
+     */
     private void playAgain(PlayerHandler player) {
 
         String response = player.receiveMessage().toLowerCase();
@@ -76,11 +98,19 @@ public class Game implements Runnable{
         }
     }
 
+    /**
+     * Responsible for sending a message to both players.
+     * @param message
+     */
     private void broadCast(String message) {
         player1.sendMessage(message);
         player2.sendMessage(message);
     }
 
+    /**
+     * Generates the board for the game.
+     * @return char[][].
+     */
     private char[][] createBoard() {
 
         char[][] array = new char[6][7];
@@ -93,6 +123,9 @@ public class Game implements Runnable{
         return array;
     }
 
+    /**
+     * This method prints the Chars that build the board.
+     */
     private void printBoard() {
 
         for (int i = 0; i < boardGame.length; i++) {
@@ -107,6 +140,10 @@ public class Game implements Runnable{
         broadCast(BOARD_LIMITATION);
     }
 
+    /**
+     * The method that receives the player's move.
+     * @param player
+     */
     private void receiveMove(PlayerHandler player){
 
         String move = player.receiveMessage();
@@ -122,6 +159,12 @@ public class Game implements Runnable{
         receiveMove(player);
     }
 
+    /**
+     * Checks if the column selected by the player is not full.
+     * @param move
+     * @param player
+     * @return boolean
+     */
     private boolean playValidation(int move, PlayerHandler player) {
         if (boardGame[0][move] != ' ') {
             player.sendMessage(COLUMN_FULL);
@@ -130,6 +173,11 @@ public class Game implements Runnable{
         return true;
     }
 
+    /**
+     * Inserts the move in board.
+     * @param move
+     * @param playerChar
+     */
     private void play(int move, char playerChar) {
 
         for (int i = 5; i >= 0; i--) {
@@ -140,6 +188,12 @@ public class Game implements Runnable{
         }
     }
 
+    /**
+     * Verifies if someone won or if it was a draw.
+     * @param player
+     * @param playerHandler
+     * @return boolean
+     */
     private boolean checkWinner(char player, PlayerHandler playerHandler) {
 
         //check row
@@ -197,12 +251,17 @@ public class Game implements Runnable{
         return true;
     }
 
+    /**
+     * Sends a welcome message to all the players.
+     */
     private void welcome() {
         broadCast(START_GAME);
     }
 
 
-
+    /**
+     * This method will run when the thread stars and all methods will be executed.
+     */
     @Override
     public void run() {
         welcome();

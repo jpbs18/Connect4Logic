@@ -86,7 +86,7 @@ public class Player {
     }
 
     /**
-     * This class is used for creating serverListener objects.
+     * This inner class is used for creating serverListener objects.
      * Those objects implement Runnable.
      * Since Runnable is a functional Interface, the method run has to be override.
      */
