@@ -3,6 +3,9 @@ package academy.mindswap.Connect4;
 import java.io.*;
 import java.net.Socket;
 
+/**
+ * This class establish the connection between server and players.
+ */
 public class PlayerHandler {
 
     private Socket playerSocket;
