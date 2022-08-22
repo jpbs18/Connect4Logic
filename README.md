@@ -30,8 +30,8 @@ When the board it is completed with the 42 plays and there aren't a line that it
 
 ## Packages
 
-Classes:
-Game
+## Classes:
+# Game
 
 PlayerHandler
 Server
