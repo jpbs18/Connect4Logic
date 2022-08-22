@@ -1,5 +1,7 @@
 package academy.mindswap.Connect4;
 
+import academy.mindswap.Connect4.Utilities.Colors;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -54,7 +56,7 @@ public class Server {
     }
 
     private void drawLogo(PlayerHandler playerHandler) {
-        File file = new File("/Users/mac/IdeaProjects/Connect4Logic_final/Connect4/src/academy/mindswap/Connect4/Resources/Logotype.txt");
+        File file = new File("/Users/carlapereira/Documents/gameRepository/Connect4/src/academy/mindswap/Connect4/Resources/Logotype.txt");
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader(file));
@@ -73,7 +75,8 @@ public class Server {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            playerHandler.sendMessage(draw);
+            String colorTxt= Colors.values()[(int)(Math.random()* Colors.values().length)].getColor();
+            playerHandler.sendMessage(colorTxt+ draw + RESET);
         }
     }
 
