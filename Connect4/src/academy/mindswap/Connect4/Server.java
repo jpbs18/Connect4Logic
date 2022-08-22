@@ -96,6 +96,9 @@ public class Server {
     }
 
 
+    /**
+     *
+     */
     public void findPlayer() {
         PlayerHandler[] array = new PlayerHandler[2];
         int counter = 0;
