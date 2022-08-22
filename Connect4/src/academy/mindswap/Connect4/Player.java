@@ -50,8 +50,8 @@ public class Player {
     private void handleServer() {
         setServer();
         startBuffers();
-        ServerListner serverListner = new ServerListner();
-        Thread thread = new Thread(serverListner);
+        ServerListener serverListener = new ServerListener();
+        Thread thread = new Thread(serverListener);
         thread.start();
         serverWrite();
         try {
@@ -61,7 +61,7 @@ public class Player {
         }
     }
 
-    private class ServerListner implements Runnable {
+    private class ServerListener implements Runnable {
 
         private void listenServer() {
             try {
