@@ -15,9 +15,8 @@ It was applied a Client server pattern were you could run the game and allow int
 
 
 ## Screenshots
-![](<img width="954" alt="Welcome" src="https://user-images.githubusercontent.com/104978602/186027490-59193fda-a1cb-48d6-a6f4-a77934730688.png">)
-![](<img width="1256" alt="Plyers" src="https://user-images.githubusercontent.com/104978602/186027135-5a406651-3b22-4369-b705-4795f80f531a.png">) 
-
+![](image<img width="954" alt="Welcome" src="https://user-images.githubusercontent.com/104978602/186029063-6e82095f-8956-4f64-a28e-9f55addab1e2.png">
+.png)
 
 
 ## How to Use?
