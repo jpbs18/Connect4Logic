@@ -9,7 +9,9 @@ Four in a row project, was created for a MindSwap project developed by Carla, Jo
 
 Build Status
 Bugs to be solved:
-Second players name insert just after the first.
+You save the opponents play, when is not your go, if for mistake you insert the collum and save it for the your turn it self;
+If someone plays before his turn, the game saves that move and accept it, right after the current player makes his move.
+
 
 Code Style
 There were applied a Client server pattern were you could run the game itself and interact between the players.
@@ -20,7 +22,8 @@ Features
 
 
 How to Use?
-Four in a row the game is played with min two players. The game starts when you run the server and two players at least.
+Four in a row the game is played with two players. The game starts when you run the server and two players arrive.
+
 Packages
 Classes:
 -Game
@@ -32,4 +35,4 @@ Accept the player connection
 Create a daemon thread to support the player
 Go back to step 2.( Wait for a player to connect)
 -Player
-he
+
