@@ -22,7 +22,7 @@ public class Messages {
     public final static String PLAYER_NAME = "What's your name?";
     public final static String IN_GAME = " you're now in the game!";
     public final static String ONE_PLAYER_SHORT = "We need one more player to start the game, please wait.";
-    public final static String SERVER_ONLINE = "Server is online.";
+    public final static String SERVER_ONLINE = "Server is online!";
     public final static String HOST = "localhost";
     public final static String SERVER_PROBLEMS = "Server is with problems. Try again later.";
     public final static int PORT = 8080;
