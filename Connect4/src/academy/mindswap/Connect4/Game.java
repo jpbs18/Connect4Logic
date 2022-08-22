@@ -1,5 +1,7 @@
 package academy.mindswap.Connect4;
 
+import academy.mindswap.Connect4.Utilities.Colors;
+
 import java.io.*;
 
 import static academy.mindswap.Connect4.Utilities.Messages.*;
@@ -130,16 +132,25 @@ public class Game implements Runnable{
 
         for (int i = 0; i < boardGame.length; i++) {
 
-            StringBuilder line = new StringBuilder("|");
+            StringBuilder line = new StringBuilder(Colors.BLUE.getColor() + "|");
 
             for (int j = 0; j < boardGame[0].length; j++) {
-                line.append(boardGame[i][j]).append("|");
+                if (boardGame[i][j] == 'R') {
+                    line.append(Colors.RED.getColor()).append(boardGame[i][j]).append(RESET)
+                            .append(Colors.BLUE.getColor()).append("|");
+                }
+                if (boardGame[i][j] == 'Y') {
+                    line.append(Colors.YELLOW.getColor()).append(boardGame[i][j]).append(RESET)
+                            .append(Colors.BLUE.getColor()).append("|");
+                }
+                if (boardGame[i][j] == ' ') {
+                    line.append(boardGame[i][j]).append("|");
+                }
             }
             broadCast(line.toString());
         }
         broadCast(BOARD_LIMITATION);
     }
-
     /**
      * The method that receives the player's move.
      * @param player
