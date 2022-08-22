@@ -31,6 +31,16 @@ public class Server {
         }
     }
 
+    /**
+     * Server socket accepts player's socket (blocking method).
+     * Initializes "PlayerHandler" that accepts the client socket as parameter.
+     * It calls the method drawLogo that prints for each player the logotype of the game.
+     * It sends a message to each player asking for their name.
+     * After receive the player's name, this method changes it.
+     * After a player connects to the server, it's added to the ArrayList.
+     * It calls the findPlayer method.
+     * In the end, it's a recursive call.
+     */
     private void acceptPlayer() {
         try {
             System.out.println(ACCEPTING_PLAYERS);
@@ -56,7 +66,7 @@ public class Server {
     }
 
     private void drawLogo(PlayerHandler playerHandler) {
-        File file = new File("C:\\Users\\joaos\\Desktop\\MyProjects\\Connect4Logic\\Connect4\\src\\academy\\mindswap\\Connect4\\Resources\\Logotype.txt");
+        File file = new File("/Users/mac/IdeaProjects/Connect4Logic_final_final/Connect4/src/academy/mindswap/Connect4/Resources/Logotype.txt");
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader(file));
