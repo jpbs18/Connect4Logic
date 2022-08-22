@@ -74,6 +74,7 @@ public class PlayerHandler {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
         return message;
     }
 
