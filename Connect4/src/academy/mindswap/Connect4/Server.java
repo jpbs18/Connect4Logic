@@ -6,6 +6,8 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static academy.mindswap.Connect4.Utilities.Messages.*;
+
 public class Server {
 
         private ServerSocket serverSocket;
@@ -13,9 +15,9 @@ public class Server {
 
         private void start() {
             try {
-                serverSocket = new ServerSocket(8080);
+                serverSocket = new ServerSocket(PORT);
                 list = new ArrayList<>();
-                System.out.println("Server is online.");
+                System.out.println(SERVER_ONLINE);
                 acceptPlayer();
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -24,16 +26,16 @@ public class Server {
 
         private void acceptPlayer() {
             try {
-                System.out.println("Accepting players...");
+                System.out.println(ACCEPTING_PLAYERS);
                 Socket clientSocket = serverSocket.accept(); //blocking method
                 PlayerHandler playerHandler = new PlayerHandler(clientSocket);
 
-                playerHandler.sendMessage("What's your name?");
+                playerHandler.sendMessage(PLAYER_NAME);
 
                 playerHandler.setPlayerName(playerHandler.receiveMessage());
 
-                playerHandler.sendMessage(playerHandler.getPlayerName().concat(" you're now in the game!"));
-                playerHandler.sendMessage("We need one more player to start the game, please wait.");
+                playerHandler.sendMessage(playerHandler.getPlayerName().concat(IN_GAME));
+                playerHandler.sendMessage(ONE_PLAYER_SHORT);
 
                 list.add(playerHandler);
 

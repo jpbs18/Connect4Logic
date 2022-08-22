@@ -3,6 +3,8 @@ package academy.mindswap.Connect4;
 import java.io.*;
 import java.net.Socket;
 
+import static academy.mindswap.Connect4.Utilities.Messages.*;
+
 public class Player {
 
     private Socket socket;
@@ -16,12 +18,12 @@ public class Player {
     }
 
     private void setServer() {
-        String host = "localhost";
-        int port = 8080;
+        String host = HOST;
+        int port = PORT;
         try {
             socket = new Socket(host, port);
         } catch (IOException e) {
-            System.out.println("Server is with problems. Try again later.");
+            System.out.println(SERVER_PROBLEMS);
             setServer();
         }
     }
