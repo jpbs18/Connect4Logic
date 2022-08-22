@@ -5,6 +5,9 @@ import java.net.Socket;
 
 import static academy.mindswap.Connect4.Utilities.Messages.*;
 
+/**
+ * This class is responsible for creating players for the game.
+ */
 public class Player {
 
     private Socket socket;
@@ -12,13 +15,18 @@ public class Player {
     private BufferedReader consoleReader;
     private BufferedWriter serverWriter;
 
+    /**
+     * This is the main method of the class Player where are created the players.
+     * It calls the handleServer method.
+     * @param args
+     */
     public static void main(String[] args) {
         Player player = new Player();
         player.handleServer();
     }
 
     /**
-     *
+     * It creates the socket that receives the hostName and Port.
      */
     private void setServer() {
         String host = HOST;
@@ -31,6 +39,10 @@ public class Player {
         }
     }
 
+
+    /**
+     * It's a method responsible to write messages for the server.
+     */
     private void serverWrite() {
         try {
             serverWriter.write(consoleReader.readLine());
@@ -42,6 +54,9 @@ public class Player {
         }
     }
 
+    /**
+     * This method is responsible for starting the communications.
+     */
     private void startBuffers() {
         try {
             serverReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -52,6 +67,10 @@ public class Player {
         }
     }
 
+    /**
+     * This method is responsible for calling all the previous methods and creating a serverListener object.
+     * It starts a new thread  with the serverListener.
+     */
     private void handleServer() {
         setServer();
         startBuffers();
@@ -66,8 +85,16 @@ public class Player {
         }
     }
 
+    /**
+     * This class is used for creating serverListener objects.
+     * Those objects implement Runnable.
+     * Since Runnable is a functional Interface, the method run has to be override.
+     */
     private class ServerListener implements Runnable {
 
+        /**
+         * This method is responsible for listening the messages from the server (it's always "listening").
+         */
         private void listenServer() {
             try {
                 String message = serverReader.readLine();
@@ -82,6 +109,9 @@ public class Player {
             }
         }
 
+        /**
+         * When the thread starts it runs the method listenServer.
+         */
         @Override
         public void run() {
             listenServer();
