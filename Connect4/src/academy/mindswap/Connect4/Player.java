@@ -2,6 +2,7 @@ package academy.mindswap.Connect4;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.concurrent.Semaphore;
 
 import static academy.mindswap.Connect4.Utilities.Messages.*;
 
@@ -14,6 +15,8 @@ public class Player {
     private BufferedReader serverReader;
     private BufferedReader consoleReader;
     private BufferedWriter serverWriter;
+
+    private final Semaphore semaphore = new Semaphore(1);
 
     /**
      * This is the main method of the class Player where are created the players.
@@ -45,11 +48,13 @@ public class Player {
      */
     private void serverWrite() {
         try {
+            semaphore.acquire();
+            System.in.read(new byte[System.in.available()]);
             serverWriter.write(consoleReader.readLine());
             serverWriter.newLine();
             serverWriter.flush();
             serverWrite();
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
@@ -101,6 +106,9 @@ public class Player {
                 if (message == null) {
                     serverWriter.close();
                     return;
+                }
+                if(message.equals(YOUR_TURN)){
+                    semaphore.release();
                 }
                 System.out.println(message);
                 listenServer();
