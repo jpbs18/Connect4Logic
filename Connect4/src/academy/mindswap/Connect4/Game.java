@@ -18,11 +18,10 @@ public class Game implements Runnable{
     }
     private void gameProcess(){
 
-        player1.setPlayerChar('R');
-        player2.setPlayerChar('Y');
+        player1.setPlayerChar(R);
+        player2.setPlayerChar(Y);
 
         while(true){
-
 
             printBoard();
             player1.sendMessage(YOUR_TURN);
@@ -59,12 +58,12 @@ public class Game implements Runnable{
         String response = player.receiveMessage().toLowerCase();
 
         switch (response){
-            case "yes":
+            case YES:
                 player.sendMessage(NEED_A_PLAYER);
                 player.endGame();
                 server.findPlayer();
                 return;
-            case "no":
+            case NO:
                 player.sendMessage(GOODBYE);
                 player.closeSocket();
                 return;
@@ -95,14 +94,14 @@ public class Game implements Runnable{
 
         for (int i = 0; i < boardGame.length; i++) {
 
-            String line = "|";
+            StringBuilder line = new StringBuilder("|");
 
             for (int j = 0; j < boardGame[0].length; j++) {
-                line += boardGame[i][j] + "|";
+                line.append(boardGame[i][j]).append("|");
             }
-            broadCast(line);
+            broadCast(line.toString());
         }
-        broadCast("---------------\n 0 1 2 3 4 5 6\n");
+        broadCast(BOARD_LIMITATION);
     }
 
     private void receiveMove(PlayerHandler player){
@@ -116,13 +115,13 @@ public class Game implements Runnable{
             play(Integer.parseInt(move), player.getPlayerChar());
             return;
         }
-        player.sendMessage("Please insert a valid move.");
+        player.sendMessage(VALID_MOVE);
         receiveMove(player);
     }
 
     private boolean playValidation(int move, PlayerHandler player) {
         if (boardGame[0][move] != ' ') {
-            player.sendMessage("That column is full, pick another one.");
+            player.sendMessage(COLUMN_FULL);
             return false;
         }
         return true;
@@ -141,11 +140,11 @@ public class Game implements Runnable{
     private boolean checkWinner(char player, PlayerHandler playerHandler) {
 
         //check row
-        for (int i = 0; i < boardGame.length; i++) {
+        for (char[] value : boardGame) {
             for (int j = 0; j < boardGame[0].length - 3; j++) {
-                if (boardGame[i][j] == player && boardGame[i][j + 1] == player &&
-                        boardGame[i][j + 2] == player && boardGame[i][j + 3] == player) {
-                    broadCast(playerHandler.getPlayerName() + " won this game!");
+                if (value[j] == player && value[j + 1] == player &&
+                        value[j + 2] == player && value[j + 3] == player) {
+                    broadCast(playerHandler.getPlayerName() + WIN);
                     return true;
                 }
             }
@@ -156,7 +155,7 @@ public class Game implements Runnable{
             for (int j = 0; j < boardGame[0].length; j++) {
                 if (boardGame[i][j] == player && boardGame[i + 1][j] == player &&
                         boardGame[i + 2][j] == player && boardGame[i + 3][j] == player) {
-                    broadCast(playerHandler.getPlayerName() + " won this game!");
+                    broadCast(playerHandler.getPlayerName() + WIN);
                     return true;
                 }
             }
@@ -167,7 +166,7 @@ public class Game implements Runnable{
             for (int j = 0; j < boardGame[0].length - 3; j++) {
                 if (boardGame[i][j] == player && boardGame[i - 1][j + 1] == player &&
                         boardGame[i - 2][j + 2] == player && boardGame[i - 3][j + 3] == player) {
-                    broadCast(playerHandler.getPlayerName() + " won this game!");
+                    broadCast(playerHandler.getPlayerName() + WIN);
                     return true;
                 }
             }
@@ -178,29 +177,25 @@ public class Game implements Runnable{
             for (int j = 0; j < boardGame[0].length - 3; j++) {
                 if (boardGame[i][j] == player && boardGame[i + 1][j + 1] == player &&
                         boardGame[i + 2][j + 2] == player && boardGame[i + 3][j + 3] == player) {
-                    broadCast(playerHandler.getPlayerName() + " won this game!");
+                    broadCast(playerHandler.getPlayerName() + WIN);
                     return true;
                 }
             }
         }
 
-        for(int i = 0; i < boardGame.length;i++){
-            for(int j = 0; j < boardGame[0].length; j++){
-                if(boardGame[i][j] == ' '){
+        for (char[] chars : boardGame) {
+            for (int j = 0; j < boardGame[0].length; j++) {
+                if (chars[j] == ' ') {
                     return false;
-                }
-                else{
-                    broadCast("It's a draw guys!");
-                    return true;
                 }
             }
         }
-        return false;
+        broadCast(DRAW);
+        return true;
     }
 
     private void welcome() {
-        player1.sendMessage("Let's start the game!\n");
-        player2.sendMessage("Let's start the game!\n");
+        broadCast(START_GAME);
     }
 
     @Override
