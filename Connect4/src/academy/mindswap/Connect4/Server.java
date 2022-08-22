@@ -66,7 +66,7 @@ public class Server {
     }
 
     /**
-     * It creates a file .txt that has the logotype.
+     * It creates a file txt that has the logotype.
      * It creates a buffereredReader to read the txt file and then it prints the logotype with random colors for each player.
      * @param playerHandler
      */
