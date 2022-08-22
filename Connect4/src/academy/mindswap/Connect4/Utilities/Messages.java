@@ -25,5 +25,6 @@ public class Messages {
     public final static String SERVER_ONLINE = "Server is online!";
     public final static String HOST = "localhost";
     public final static String SERVER_PROBLEMS = "Server is with problems. Try again later.";
-    public final static int PORT = 8080;
+    public final static int PORT = 8082;
+    public final static String RESET="\u001B[0m";
 }
