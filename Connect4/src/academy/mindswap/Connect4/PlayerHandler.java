@@ -5,6 +5,7 @@ import java.net.Socket;
 
 /**
  * This class establish the connection between server and players.
+ *
  */
 public class PlayerHandler {
 
@@ -15,12 +16,19 @@ public class PlayerHandler {
     private String playerName;
     private char playerChar;
 
+    /**
+     * This is a constructor method that receives one parameter and starts the Buffers.
+     * @param clientSocket
+     */
     public PlayerHandler(Socket clientSocket) {
         playerSocket = clientSocket;
         startBuffers();
     }
 
-
+    /**
+     * This method checks if the Player it is connected;
+     * @return boolean
+     */
     public boolean isOffline(){
         if (playerSocket == null){
             return true;
@@ -28,6 +36,9 @@ public class PlayerHandler {
         return playerSocket.isClosed();
     }
 
+    /**
+     * It is used to create the objects BufferReader and BufferWriter that allows communication .
+     */
     private void startBuffers(){
         try {
             reader = new BufferedReader( new InputStreamReader(playerSocket.getInputStream()));
@@ -38,6 +49,10 @@ public class PlayerHandler {
         }
     }
 
+    /**
+     * It is in charge of sending messages to the players.
+     * @param   message String
+     */
     public void sendMessage(String message) {
         try {
             writer.write(message);
@@ -48,6 +63,10 @@ public class PlayerHandler {
         }
     }
 
+    /**
+     * This method reads messages from the Players in put.
+     * @return
+     */
     public String receiveMessage(){
         String message;
         try {
@@ -62,13 +81,22 @@ public class PlayerHandler {
         return isPlaying;
     }
 
+    /**
+     * It is used to change the state of the isPlaying when the game starts to true.
+     */
     public void startGame(){
         isPlaying = true;
     }
+    /**
+     * It is used to change the state of the isPlaying when the game ends to false.
+     */
     public void endGame(){
         isPlaying = false;
     }
 
+    /**
+     * This method is used to close the playerSocket.
+     */
     public void closeSocket() {
         try {
             playerSocket.close();
