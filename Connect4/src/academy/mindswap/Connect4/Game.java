@@ -1,5 +1,7 @@
 package academy.mindswap.Connect4;
 
+import static academy.mindswap.Connect4.Utilities.Messages.*;
+
 public class Game implements Runnable{
 
     private final PlayerHandler player1;
@@ -23,8 +25,8 @@ public class Game implements Runnable{
 
 
             printBoard();
-            player1.sendMessage("it's your turn, please inset move from 0 to 6");
-            player2.sendMessage("It's your opponent turn.");
+            player1.sendMessage(YOUR_TURN);
+            player2.sendMessage(OPPONENT_TURN);
 
             receiveMove(player1);
             if(checkWinner(player1.getPlayerChar(),player1)){
@@ -34,8 +36,8 @@ public class Game implements Runnable{
             }
 
             printBoard();
-            player2.sendMessage("it's your turn, please inset move from 0 to 6");
-            player1.sendMessage("It's your opponent turn.");
+            player2.sendMessage(YOUR_TURN);
+            player1.sendMessage(OPPONENT_TURN);
 
             receiveMove(player2);
             if(checkWinner(player2.getPlayerChar(),player2)){
@@ -47,7 +49,7 @@ public class Game implements Runnable{
     }
 
     private void checkIfWantsToPlay(PlayerHandler player) {
-        broadCast("Want to play another game?");
+        broadCast(WANT_TO_PLAY);
         playAgain(player1);
         playAgain(player2);
     }
@@ -57,14 +59,17 @@ public class Game implements Runnable{
         String response = player.receiveMessage().toLowerCase();
 
         switch (response){
-            case "yes": player.sendMessage("We need one more player, please wait.");
+            case "yes":
+                player.sendMessage(NEED_A_PLAYER);
                 player.endGame();
                 server.findPlayer();
                 return;
-            case "no": player.sendMessage("See you tomorrow!");
+            case "no":
+                player.sendMessage(GOODBYE);
                 player.closeSocket();
                 return;
-            default: player.sendMessage("Say yes or no please...");
+            default:
+                player.sendMessage(INPUT_NOT_VALID);
                 playAgain(player);
         }
     }
