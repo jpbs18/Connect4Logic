@@ -18,7 +18,6 @@ There were applied a Client server pattern were you could run the game itself an
 
 Screenshots
 
-Features
 
 
 How to Use?
