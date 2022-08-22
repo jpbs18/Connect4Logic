@@ -1,6 +1,7 @@
 
 Read me
 Project Title
+
 Four in a row project, was create for a MindSwap project developed by Carla, João and Luís.
 The project was build using Java language in IntelliJ IDE.
 The main objective was to build a piece of softwere where you could run a multiplayer game using multithreading and a TCP protocol. 
