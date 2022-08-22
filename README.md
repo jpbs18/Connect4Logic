@@ -1,22 +1,18 @@
 # Connect4Logic
 
-Four in a row project, was created for a MindSwap project developed by Carla Pereira, João Santos and Luís.
-The project was build using Java language in IntelliJ IDE.
-The main objective was to build a piece of software where you could run a multiplayer game using multithreading and a TCP protocol.
+
 
 ## Motivation
 
-Four in a row project, was created for a MindSwap project developed by Carla, João and Luís.
-
-## Build Status
-
-Bugs to be solved:
-You save the opponents play, when is not your go, if for mistake you insert the collum and save it for the your turn it self;
-If someone plays before his turn, the game saves that move and accept it, right after the current player makes his move.
+Connect4Logic was created for a MindSwap project developed by Carla Pereira, João Santos and Luís Ribeiro.
+The project was built using Java language in IntelliJ IDE.
+The main objective was to build a piece of software where you could run a multiplayer game using multithreading and a TCP protocol.
 
 
 ## Code Style
-There were applied a Client server pattern were you could run the game itself and interact between the players.
+
+It was applied a Client server pattern were you could run the game and allow interaction between the players.
+
 
 ## Screenshots
 
@@ -24,20 +20,10 @@ There were applied a Client server pattern were you could run the game itself an
 
 ## How to Use?
 
-Four in a row the game is played with two players. The game starts when you run the server and two players arrive.
-The game objective it is to make a line of four(R or Y) in line vertical, horizontal or diagnonal.
-When the board it is completed with the 42 plays and there aren't a line that it is draw.
+The game is played with two players. The game starts when you run the server and two players arrive.
+The game objective is to make four(R or Y) in a vertical, or horizontal or diagnonal line.
+When the board is completed with 42 plays that it is a draw.
+When a player wins, the game asks both players if they want to play again.
+The server allows to run multiple games at the same time.
 
-## Packages
-
-## Classes:
-### Game
-### PlayerHandler
-### Server
-Initialize the server socket
-Wait for a player to connect
-Accept the player connection
-Create a thread to support the player
-Go back to step 2.( Wait for a player to connect)
-# Player
-
+Have FUN!! ;)
