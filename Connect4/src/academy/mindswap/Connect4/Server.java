@@ -10,16 +10,27 @@ import java.util.Arrays;
 
 import static academy.mindswap.Connect4.Utilities.Messages.*;
 
+/**
+ * Class responsible for creating a server and accepting players to start the game.
+ */
 public class Server {
 
     private ServerSocket serverSocket;
     private ArrayList<PlayerHandler> list;
 
+    /**
+     * It's the main method of the class Server.
+     * @param args
+     */
     public static void main(String[] args) {
         Server server = new Server();
         server.start();
     }
 
+    /**
+     * This method starts the server creating a new server socket that receives a PORT number.
+     * It calls the method acceptPlayer.
+     */
     private void start() {
         try {
             serverSocket = new ServerSocket(PORT);
@@ -65,6 +76,10 @@ public class Server {
         }
     }
 
+    /**
+     * Draw a logo for each player in the beginning of the game with random colors.
+     * @param playerHandler
+     */
     private void drawLogo(PlayerHandler playerHandler) {
         File file = new File("/Users/mac/IdeaProjects/Connect4Logic_final_final/Connect4/src/academy/mindswap/Connect4/Resources/Logotype.txt");
         BufferedReader reader = null;
@@ -91,6 +106,11 @@ public class Server {
     }
 
 
+    /**
+     * It creates an array.
+     * A for loop iterates throw the ArrayList and adds the players in the ArrayList to the array created before.
+     * The game starts if the position 1 of the array created isn't null, meaning that the array is full of players.
+     */
     public void findPlayer() {
         PlayerHandler[] array = new PlayerHandler[2];
         int counter = 0;
