@@ -2,7 +2,7 @@ package academy.mindswap.Connect4;
 
 import academy.mindswap.Connect4.Utilities.Colors;
 
-import java.io.*;
+import java.util.Arrays;
 
 import static academy.mindswap.Connect4.Utilities.Messages.*;
 
@@ -13,15 +13,18 @@ public class Game implements Runnable{
 
     private final PlayerHandler player1;
     private final PlayerHandler player2;
+    private final PlayerHandler[] playerHandlers;
     private final Server server;
-    private char[][] boardGame;
+    private final char[][] boardGame;
 
     /**
      * Construct method that initialize the players and create the board.
+     *
      * @param array
      * @param server
      */
     public Game(PlayerHandler[] array, Server server) {
+        this.playerHandlers = array;
         this.server = server;
         player1 = array[0];
         player2 = array[1];
@@ -105,8 +108,7 @@ public class Game implements Runnable{
      * @param message
      */
     private void broadCast(String message) {
-        player1.sendMessage(message);
-        player2.sendMessage(message);
+        Arrays.stream(playerHandlers).forEach(e -> e.sendMessage(message));
     }
 
     /**
