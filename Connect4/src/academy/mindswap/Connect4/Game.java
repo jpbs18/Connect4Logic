@@ -1,5 +1,7 @@
 package academy.mindswap.Connect4;
 
+import java.io.*;
+
 import static academy.mindswap.Connect4.Utilities.Messages.*;
 
 public class Game implements Runnable{
@@ -20,6 +22,7 @@ public class Game implements Runnable{
 
         player1.setPlayerChar(R);
         player2.setPlayerChar(Y);
+
 
         while(true){
 
@@ -197,6 +200,8 @@ public class Game implements Runnable{
     private void welcome() {
         broadCast(START_GAME);
     }
+
+
 
     @Override
     public void run() {
