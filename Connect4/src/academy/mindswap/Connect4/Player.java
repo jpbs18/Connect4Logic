@@ -15,7 +15,7 @@ public class Player {
     private BufferedReader serverReader;
     private BufferedReader consoleReader;
     private BufferedWriter serverWriter;
-    private final Semaphore semaphore = new Semaphore(1);
+    //private final Semaphore semaphore = new Semaphore(1);
 
 
     /**
@@ -48,13 +48,13 @@ public class Player {
      */
     private void serverWrite() {
         try {
-            semaphore.acquire();
-            System.in.read(new byte[System.in.available()]);
+            //semaphore.acquire();
+            //System.in.read(new byte[System.in.available()]);
             serverWriter.write(consoleReader.readLine());
             serverWriter.newLine();
             serverWriter.flush();
             serverWrite();
-        } catch (IOException | InterruptedException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -108,9 +108,9 @@ public class Player {
                     return;
                 }
                 System.out.println(message);
-                if(message.equals(YOUR_TURN)){
-                    semaphore.release();
-                }
+                //if(message.equals(YOUR_TURN)){
+                 //   semaphore.release();
+                //}
                 listenServer();
             } catch (IOException e) {
                 throw new RuntimeException(e);
