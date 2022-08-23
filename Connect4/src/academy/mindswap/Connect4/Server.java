@@ -65,17 +65,18 @@ public class Server {
             playerHandler.sendMessage(PLAYER_NAME);
 
             playerHandler.setPlayerName(playerHandler.receiveMessage());
-            if(playerHandler.getPlayerName()!=null) {
-                playerHandler.sendMessage(playerHandler.getPlayerName().concat(IN_GAME));
 
 
-                playerHandler.sendMessage(ONE_PLAYER_SHORT);
+            playerHandler.sendMessage(playerHandler.getPlayerName().concat(IN_GAME));
 
-                list.add(playerHandler);
 
-                findPlayer();
-                acceptPlayer();
-            }
+            playerHandler.sendMessage(ONE_PLAYER_SHORT);
+
+            list.add(playerHandler);
+
+            findPlayer();
+            acceptPlayer();
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -86,7 +87,7 @@ public class Server {
      * @param playerHandler a PlayerHandler object.
      */
     private void drawLogo(PlayerHandler playerHandler) {
-        File file = new File("/Users/carlapereira/Documents/Game/Connect4/src/academy/mindswap/Connect4/Resources/Logotype.txt");
+        File file = new File("C:\\Users\\João\\Desktop\\MyProjects\\Connect4Logic\\Connect4\\src\\academy\\mindswap\\Connect4\\Resources\\Logotype.txt");
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader(file));
