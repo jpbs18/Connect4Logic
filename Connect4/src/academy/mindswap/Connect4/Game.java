@@ -11,8 +11,8 @@ import static academy.mindswap.Connect4.Utilities.Messages.*;
  */
 public class Game implements Runnable{
 
-    private final PlayerHandler player1;
-    private final PlayerHandler player2;
+    public final PlayerHandler player1;
+    public final PlayerHandler player2;
     private final PlayerHandler[] playerHandlers;
     private final Server server;
     private final char[][] boardGame;
@@ -114,7 +114,7 @@ public class Game implements Runnable{
      * Generates the board for the game.
      * @return char[][].
      */
-    private char[][] createBoard() {
+    public char[][] createBoard() {
 
         char[][] array = new char[6][7];
 

@@ -66,15 +66,17 @@ public class Server {
             playerHandler.sendMessage(PLAYER_NAME);
 
             playerHandler.setPlayerName(playerHandler.receiveMessage());
+            if(playerHandler.getPlayerName()!=null) {
+                playerHandler.sendMessage(playerHandler.getPlayerName().concat(IN_GAME));
 
-            playerHandler.sendMessage(playerHandler.getPlayerName().concat(IN_GAME));
-            playerHandler.sendMessage(ONE_PLAYER_SHORT);
 
-            list.add(playerHandler);
+                playerHandler.sendMessage(ONE_PLAYER_SHORT);
 
-            findPlayer();
-            acceptPlayer();
+                list.add(playerHandler);
 
+                findPlayer();
+                acceptPlayer();
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -85,7 +87,7 @@ public class Server {
      * @param playerHandler a PlayerHandler object.
      */
     private void drawLogo(PlayerHandler playerHandler) {
-        File file = new File("C:\\Users\\joaos\\Desktop\\Connect4Logic\\Connect4\\src\\academy\\mindswap\\Connect4\\Resources\\Logotype.txt");
+        File file = new File("/Users/carlapereira/Documents/Game/Connect4/src/academy/mindswap/Connect4/Resources/Logotype.txt");
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader(file));
@@ -118,7 +120,7 @@ public class Server {
     public void findPlayer() {
         PlayerHandler[] array = new PlayerHandler[2];
         int counter = 0;
-
+            //Do while(array.length!=2)
         for (PlayerHandler player : list) {
             if (!player.isOffline() && player != array[0] && !player.getIsPlaying()) {
                 array[counter] = player;
