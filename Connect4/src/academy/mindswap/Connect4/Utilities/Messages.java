@@ -30,4 +30,5 @@ public class Messages {
     public final static String SERVER_PROBLEMS = "Server is with problems. Try again later.";
     public final static int PORT = 8082;
     public final static String RESET="\u001B[0m";
+    public final static String BOLD = "\033[1;32m";
 }

@@ -151,7 +151,7 @@ public class Game implements Runnable{
             }
             broadCast(line.toString());
         }
-        broadCast(BOARD_LIMITATION);
+        broadCast(BOARD_LIMITATION.concat(RESET));
     }
     /**
      * The method that receives the player's move.
@@ -214,7 +214,7 @@ public class Game implements Runnable{
             for (int j = 0; j < boardGame[0].length - 3; j++) {
                 if (value[j] == player && value[j + 1] == player &&
                         value[j + 2] == player && value[j + 3] == player) {
-                    broadCast(playerHandler.getPlayerName() + WIN);
+                    broadCast(BOLD.concat(playerHandler.getPlayerName() + WIN));
                     return true;
                 }
             }
@@ -225,7 +225,7 @@ public class Game implements Runnable{
             for (int j = 0; j < boardGame[0].length; j++) {
                 if (boardGame[i][j] == player && boardGame[i + 1][j] == player &&
                         boardGame[i + 2][j] == player && boardGame[i + 3][j] == player) {
-                    broadCast(playerHandler.getPlayerName() + WIN);
+                    broadCast(BOLD.concat(playerHandler.getPlayerName() + WIN));
                     return true;
                 }
             }
@@ -236,7 +236,7 @@ public class Game implements Runnable{
             for (int j = 0; j < boardGame[0].length - 3; j++) {
                 if (boardGame[i][j] == player && boardGame[i - 1][j + 1] == player &&
                         boardGame[i - 2][j + 2] == player && boardGame[i - 3][j + 3] == player) {
-                    broadCast(playerHandler.getPlayerName() + WIN);
+                    broadCast(BOLD.concat(playerHandler.getPlayerName() + WIN));
                     return true;
                 }
             }
@@ -247,7 +247,7 @@ public class Game implements Runnable{
             for (int j = 0; j < boardGame[0].length - 3; j++) {
                 if (boardGame[i][j] == player && boardGame[i + 1][j + 1] == player &&
                         boardGame[i + 2][j + 2] == player && boardGame[i + 3][j + 3] == player) {
-                    broadCast(playerHandler.getPlayerName() + WIN);
+                    broadCast(BOLD.concat(playerHandler.getPlayerName() + WIN));
                     return true;
                 }
             }
@@ -260,7 +260,7 @@ public class Game implements Runnable{
                 }
             }
         }
-        broadCast(DRAW);
+        broadCast(BOLD.concat(DRAW));
         return true;
     }
 
