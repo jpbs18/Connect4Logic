@@ -7,7 +7,7 @@ import java.util.Arrays;
 import static academy.mindswap.Connect4.Utilities.Messages.*;
 
 /**
- * This class it is responsible for running the game and implements the functional Interface Runnable.
+ * This class is responsible for running the game and implements the functional Interface Runnable.
  */
 public class Game implements Runnable{
 
