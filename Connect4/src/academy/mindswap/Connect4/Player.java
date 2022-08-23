@@ -107,9 +107,6 @@ public class Player {
                     serverWriter.close();
                     return;
                 }
-                if(message.equals(YOUR_TURN)){
-                    semaphore.release();
-                }
                 System.out.println(message);
                 if(message.equals(YOUR_TURN)){
                     semaphore.release();
