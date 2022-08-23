@@ -83,13 +83,13 @@ public class PlayerHandler {
     }
 
     /**
-     * It is used to change the state of the isPlaying when the game starts to true.
+     * It is used to change the state of the isPlaying variable when the game starts to true.
      */
     public void startGame(){
         isPlaying = true;
     }
     /**
-     * It is used to change the state of the isPlaying when the game ends to false.
+     * It is used to change the state of the isPlaying variable when the game ends to false.
      */
     public void endGame(){
         isPlaying = false;
