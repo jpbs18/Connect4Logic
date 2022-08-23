@@ -15,8 +15,8 @@ public class Player {
     private BufferedReader serverReader;
     private BufferedReader consoleReader;
     private BufferedWriter serverWriter;
-
     private final Semaphore semaphore = new Semaphore(1);
+
 
     /**
      * This is the main method of the class Player where are created the players.
@@ -111,6 +111,9 @@ public class Player {
                     semaphore.release();
                 }
                 System.out.println(message);
+                if(message.equals(YOUR_TURN)){
+                    semaphore.release();
+                }
                 listenServer();
             } catch (IOException e) {
                 throw new RuntimeException(e);
