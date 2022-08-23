@@ -26,7 +26,7 @@ public class PlayerHandler {
     }
 
     /**
-     * This method checks if the Player it is connected;
+     * This method checks if the Player is connected;
      * @return boolean
      */
     public boolean isOffline(){
@@ -64,7 +64,7 @@ public class PlayerHandler {
     }
 
     /**
-     * This method reads messages from the Players in put.
+     * This method reads messages from the Players input.
      * @return
      */
     public String receiveMessage(){

@@ -19,7 +19,6 @@ public class Game implements Runnable{
 
     /**
      * Construct method that initialize the players and create the board.
-     *
      * @param array
      * @param server
      */
@@ -70,7 +69,7 @@ public class Game implements Runnable{
         }
     }
     /**
-     * A method that verifies if the players continue playing.
+     * A method that verifies if the players want to continue playing.
      */
 
     private void checkIfWantsToPlay(PlayerHandler player) {
@@ -128,7 +127,7 @@ public class Game implements Runnable{
     }
 
     /**
-     * This method prints the Chars that build the board.
+     * This method prints the Chars and the board game.
      */
     private void printBoard() {
 

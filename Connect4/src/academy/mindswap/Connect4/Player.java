@@ -44,7 +44,7 @@ public class Player {
 
 
     /**
-     * It's a method responsible to write messages for the server.
+     * It's the method responsible for writing messages to the server.
      */
     private void serverWrite() {
         try {
@@ -91,14 +91,13 @@ public class Player {
     }
 
     /**
-     * This inner class is used for creating serverListener objects.
-     * Those objects implement Runnable.
-     * Since Runnable is a functional Interface, the method run has to be override.
+     * This inner class that implements Runnable Interface is used for creating serverListener objects.
+     * Since Runnable is a functional Interface(only 1 method), only the method run has to be overridden.
      */
     private class ServerListener implements Runnable {
 
         /**
-         * This method is responsible for listening the messages from the server (it's always "listening").
+         * This method is responsible for listening the messages from the server.
          */
         private void listenServer() {
             try {
@@ -118,7 +117,7 @@ public class Player {
         }
 
         /**
-         * When the thread starts it runs the method listenServer.
+         * As soon as the thread starts, the code inside this method is executed.
          */
         @Override
         public void run() {

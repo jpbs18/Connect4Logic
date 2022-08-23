@@ -16,17 +16,13 @@ public enum Colors {
         private String color;
 
     /**
-     * Constructor method of enum Colors that accepts a String as parameter.
+     * Constructor method of the enum that accepts a String as parameter.
      * @param color
      */
         Colors(String color) {
             this.color = color;
         }
 
-    /**
-     * Method responsible for getting a specific color.
-     * @return a String that represents a color.
-     */
     public String getColor() {
             return color;
         }

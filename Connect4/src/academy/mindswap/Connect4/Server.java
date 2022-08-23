@@ -32,7 +32,7 @@ public class Server {
     }
 
     /**
-     * This method starts the server creating a new server socket that receives a PORT number.
+     * This method starts the server creating a new server socket that receives a PORT number and a pool thread.
      * It calls the method acceptPlayer.
      */
     private void start() {
@@ -52,7 +52,6 @@ public class Server {
      * Initializes "PlayerHandler" that accepts the client socket as parameter.
      * It calls the method drawLogo that prints for each player the logotype of the game.
      * It sends a message to each player asking for their name.
-     * After receive the player's name, this method changes it.
      * After a player connects to the server, it's added to the ArrayList.
      * It calls the findPlayer method.
      * In the end, it's a recursive call.
@@ -112,9 +111,9 @@ public class Server {
 
 
     /**
-     * It creates an array.
-     * A for loop iterates throw the ArrayList and adds the players in the ArrayList to the array created before.
-     * The game starts if the position 1 of the array created isn't null, meaning that the array is full of players.
+     * It creates an array of playerHandlers.
+     * The game starts if the position 1 of the array created isn't null, meaning that the array is full of players
+     * and ready to start a new game.
      */
     public void findPlayer() {
         PlayerHandler[] array = new PlayerHandler[2];
