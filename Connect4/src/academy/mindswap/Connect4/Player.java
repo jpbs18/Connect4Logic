@@ -107,7 +107,7 @@ public class Player {
                     return;
                 }
                 System.out.println(message);
-                if(message.equals(YOUR_TURN) || message.equals(WANT_TO_PLAY)
+                if(message.equals(YOUR_TURN) || message.equals(WANT_TO_PLAY) || message.equals(COLUMN_FULL)
                         || message.equals(INPUT_NOT_VALID) || message.equals(VALID_MOVE)){
                     semaphore.release();
                 }
