@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"academy.mindswap.Connect4"},{"l":"academy.mindswap.Connect4.Utilities"},{"l":"All Packages","u":"allpackages-index.html"}];updateSearchResults();
