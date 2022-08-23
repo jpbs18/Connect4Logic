@@ -81,7 +81,7 @@ public class Server {
      * @param playerHandler
      */
     private void drawLogo(PlayerHandler playerHandler) {
-        File file = new File("C:\\Users\\João\\Desktop\\MyProjects\\Connect4Logic\\Connect4\\src\\academy\\mindswap\\Connect4\\Resources\\Logotype.txt");
+        File file = new File("C:\\Users\\joaos\\Desktop\\MyProjects\\Connect4Logic\\Connect4\\src\\academy\\mindswap\\Connect4\\Resources\\Logotype.txt");
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader(file));
@@ -89,7 +89,7 @@ public class Server {
             throw new RuntimeException(e);
         }
 
-        String draw = "";
+        String draw;
 
         while (true) {
 
