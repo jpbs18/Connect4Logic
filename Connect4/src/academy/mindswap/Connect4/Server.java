@@ -24,7 +24,7 @@ public class Server {
 
     /**
      * It's the main method of the class Server.
-     * @param args
+     * @param args an array of Strings
      */
     public static void main(String[] args) {
         Server server = new Server();
@@ -82,7 +82,7 @@ public class Server {
 
     /**
      * Draw a logo for each player in the beginning of the game with random colors.
-     * @param playerHandler
+     * @param playerHandler a PlayerHandler object.
      */
     private void drawLogo(PlayerHandler playerHandler) {
         File file = new File("C:\\Users\\joaos\\Desktop\\Connect4Logic\\Connect4\\src\\academy\\mindswap\\Connect4\\Resources\\Logotype.txt");

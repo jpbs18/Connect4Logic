@@ -17,7 +17,7 @@ public enum Colors {
 
     /**
      * Constructor method of the enum that accepts a String as parameter.
-     * @param color
+     * @param color a String representing a specific color.
      */
         Colors(String color) {
             this.color = color;

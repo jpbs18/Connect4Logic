@@ -21,7 +21,7 @@ public class Player {
     /**
      * This is the main method of the class Player where are created the players.
      * It calls the handleServer method.
-     * @param args
+     * @param args an array of Strings.
      */
     public static void main(String[] args) {
         Player player = new Player();

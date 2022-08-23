@@ -18,7 +18,7 @@ public class PlayerHandler {
 
     /**
      * This is a constructor method that receives one parameter and starts the Buffers.
-     * @param clientSocket
+     * @param clientSocket the socket from the client.
      */
     public PlayerHandler(Socket clientSocket) {
         playerSocket = clientSocket;
@@ -51,7 +51,7 @@ public class PlayerHandler {
 
     /**
      * It is in charge of sending messages to the players.
-     * @param   message String
+     * @param message String that represents the received message.
      */
     public void sendMessage(String message) {
         try {
@@ -65,7 +65,7 @@ public class PlayerHandler {
 
     /**
      * This method reads messages from the Players input.
-     * @return
+     * @return a String that represents a message.
      */
     public String receiveMessage(){
         String message;

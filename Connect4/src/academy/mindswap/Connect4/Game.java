@@ -19,8 +19,8 @@ public class Game implements Runnable{
 
     /**
      * Construct method that initialize the players and create the board.
-     * @param array
-     * @param server
+     * @param array an array of PlayerHandler objects.
+     * @param server a Server object.
      */
     public Game(PlayerHandler[] array, Server server) {
         this.playerHandlers = array;
@@ -80,7 +80,7 @@ public class Game implements Runnable{
 
     /**
      * This method is responsible for managing the players choice to continue playing or not.
-     * @param player
+     * @param player a PlayerHandler object.
      */
     private void playAgain(PlayerHandler player) {
 
@@ -104,7 +104,7 @@ public class Game implements Runnable{
 
     /**
      * Responsible for sending a message to both players.
-     * @param message
+     * @param message the String that is sent to the players.
      */
     private void broadCast(String message) {
         Arrays.stream(playerHandlers).forEach(e -> e.sendMessage(message));
@@ -154,7 +154,7 @@ public class Game implements Runnable{
     }
     /**
      * The method that receives the player's move.
-     * @param player
+     * @param player a PlayerHandler object.
      */
     private void receiveMove(PlayerHandler player){
 
@@ -173,8 +173,8 @@ public class Game implements Runnable{
 
     /**
      * Checks if the column selected by the player is not full.
-     * @param move
-     * @param player
+     * @param move the number that represents which column the player wants to insert his move
+     * @param  player a PlayerHandler object.
      * @return boolean
      */
     private boolean playValidation(int move, PlayerHandler player) {
@@ -187,8 +187,8 @@ public class Game implements Runnable{
 
     /**
      * Inserts the move in board.
-     * @param move
-     * @param playerChar
+     * @param move the number that represents which column the player wants to insert his move
+     * @param playerChar the respective piece from the player
      */
     private void play(int move, char playerChar) {
 
@@ -202,17 +202,17 @@ public class Game implements Runnable{
 
     /**
      * Verifies if someone won or if it was a draw.
-     * @param player
-     * @param playerHandler
+     * @param playerChar a char that represents the respective piece from the player
+     * @param playerHandler a PlayerHandler object.
      * @return boolean
      */
-    private boolean checkWinner(char player, PlayerHandler playerHandler) {
+    private boolean checkWinner(char playerChar, PlayerHandler playerHandler) {
 
         //check row
         for (char[] value : boardGame) {
             for (int j = 0; j < boardGame[0].length - 3; j++) {
-                if (value[j] == player && value[j + 1] == player &&
-                        value[j + 2] == player && value[j + 3] == player) {
+                if (value[j] == playerChar && value[j + 1] == playerChar &&
+                        value[j + 2] == playerChar && value[j + 3] == playerChar) {
                     broadCast(BOLD.concat(playerHandler.getPlayerName() + WIN));
                     return true;
                 }
@@ -222,8 +222,8 @@ public class Game implements Runnable{
         //check column
         for (int i = 0; i < boardGame.length - 3; i++) {
             for (int j = 0; j < boardGame[0].length; j++) {
-                if (boardGame[i][j] == player && boardGame[i + 1][j] == player &&
-                        boardGame[i + 2][j] == player && boardGame[i + 3][j] == player) {
+                if (boardGame[i][j] == playerChar && boardGame[i + 1][j] == playerChar &&
+                        boardGame[i + 2][j] == playerChar && boardGame[i + 3][j] == playerChar) {
                     broadCast(BOLD.concat(playerHandler.getPlayerName() + WIN));
                     return true;
                 }
@@ -233,8 +233,8 @@ public class Game implements Runnable{
         // diagonal down - up
         for (int i = 3; i < boardGame.length; i++) {
             for (int j = 0; j < boardGame[0].length - 3; j++) {
-                if (boardGame[i][j] == player && boardGame[i - 1][j + 1] == player &&
-                        boardGame[i - 2][j + 2] == player && boardGame[i - 3][j + 3] == player) {
+                if (boardGame[i][j] == playerChar && boardGame[i - 1][j + 1] == playerChar &&
+                        boardGame[i - 2][j + 2] == playerChar && boardGame[i - 3][j + 3] == playerChar) {
                     broadCast(BOLD.concat(playerHandler.getPlayerName() + WIN));
                     return true;
                 }
@@ -244,8 +244,8 @@ public class Game implements Runnable{
         // diagonal up - down
         for (int i = 0; i < boardGame.length - 3; i++) {
             for (int j = 0; j < boardGame[0].length - 3; j++) {
-                if (boardGame[i][j] == player && boardGame[i + 1][j + 1] == player &&
-                        boardGame[i + 2][j + 2] == player && boardGame[i + 3][j + 3] == player) {
+                if (boardGame[i][j] == playerChar && boardGame[i + 1][j + 1] == playerChar &&
+                        boardGame[i + 2][j + 2] == playerChar && boardGame[i + 3][j + 3] == playerChar) {
                     broadCast(BOLD.concat(playerHandler.getPlayerName() + WIN));
                     return true;
                 }
