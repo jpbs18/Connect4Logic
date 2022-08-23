@@ -7,6 +7,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static academy.mindswap.Connect4.Utilities.Messages.*;
 
@@ -17,6 +19,8 @@ public class Server {
 
     private ServerSocket serverSocket;
     private ArrayList<PlayerHandler> list;
+
+    private ExecutorService threadpool;
 
     /**
      * It's the main method of the class Server.
@@ -35,6 +39,7 @@ public class Server {
         try {
             serverSocket = new ServerSocket(PORT);
             list = new ArrayList<>();
+            threadpool = Executors.newCachedThreadPool();
             System.out.println(SERVER_ONLINE);
             acceptPlayer();
         } catch (IOException e) {
@@ -124,8 +129,7 @@ public class Server {
 
         if (array[1] != null) {
             Game game = new Game(array, this);
-            Thread thread = new Thread(game);
-            thread.start();
+            threadpool.submit(game);
             Arrays.stream(array).forEach(PlayerHandler::startGame);
         }
     }
