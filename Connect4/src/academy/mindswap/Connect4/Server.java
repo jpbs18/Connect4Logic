@@ -19,7 +19,6 @@ public class Server {
 
     private ServerSocket serverSocket;
     private ArrayList<PlayerHandler> list;
-
     private ExecutorService threadpool;
 
     /**
