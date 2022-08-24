@@ -15,6 +15,7 @@ public class PlayerHandler {
     private boolean isPlaying;
     private String playerName;
     private char playerChar;
+    private static int counter = 0;
 
     /**
      * This is a constructor method that receives one parameter and starts the Buffers.
@@ -119,7 +120,8 @@ public class PlayerHandler {
     }
 
     public void setPlayerName(String playerName) {
-        this.playerName = playerName;
+        counter++;
+        this.playerName = playerName.isBlank() ? "Unknown player " + counter : playerName;
     }
 
 }
